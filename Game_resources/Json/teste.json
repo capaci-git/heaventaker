@@ -1,0 +1,14 @@
+[
+    {
+        "background": "background.png"
+    },
+	{
+        "character": "Michelle",
+		"text": "Testando o dialog Node"
+	},
+	
+	{
+		"text": "Iniciarei uma fala de despedida em 3 segundos."
+	}
+	
+]
