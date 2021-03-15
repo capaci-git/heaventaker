@@ -1,10 +1,10 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://addons/dialogs/dialog_character_resource.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Angels/Michelle.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Angels/Eden.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-name = "Michelle"
+name = "Eden"
 image = ExtResource( 2 )
-color = Color( 0.439216, 0.972549, 1, 1 )
+color = Color( 0.929412, 0.988235, 0.588235, 1 )

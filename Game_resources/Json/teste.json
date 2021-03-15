@@ -4,11 +4,19 @@
     },
 	{
         "character": "Michelle",
-		"text": "Testando o dialog Node"
+		"text": "Testando troca de char"
 	},
-	
 	{
-		"text": "Iniciarei uma fala de despedida em 3 segundos."
+        "character": "Eden",
+		"text": "Testando troca de char"
+	},
+	{
+        "character": "Michelle",
+		"text": "Testando troca de char"
+	},
+	{
+        "character": "Eden",
+		"text": "Testando troca de char"
 	}
 	
 ]

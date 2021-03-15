@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Sokoban/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sokoban/Box.tscn" type="PackedScene" id=2]
@@ -6,22 +6,49 @@
 [ext_resource path="res://Sokoban/Spot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sokoban/Game.gd" type="Script" id=5]
 [ext_resource path="res://Assets/stage.png" type="Texture" id=6]
+[ext_resource path="res://Sokoban/Key.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sokoban/Lockblock.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/tile.png" type="Texture" id=9]
+[ext_resource path="res://Assets/GUI .png" type="Texture" id=10]
+[ext_resource path="res://Assets/Theme/Theme.tres" type="Theme" id=11]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Blink"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Game" type="Node2D"]
 scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 5 )
+player_moves = 25
 
 [node name="Backgroud" type="Sprite" parent="."]
-position = Vector2( -210, -42 )
+position = Vector2( -110, -50 )
 texture = ExtResource( 6 )
 centered = false
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Blink = SubResource( 1 )
+
 [node name="Spots" type="Node2D" parent="."]
+position = Vector2( 100, 0 )
 
 [node name="Spot" parent="Spots" instance=ExtResource( 4 )]
 position = Vector2( 700, 300 )
 
 [node name="Walls" type="Node2D" parent="."]
+position = Vector2( 100, 0 )
 
 [node name="Wall" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 400, 400 )
@@ -101,25 +128,138 @@ position = Vector2( 1100, 500 )
 [node name="Wall14" parent="Walls" instance=ExtResource( 3 )]
 position = Vector2( 1200, 700 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 700, 700 )
+[node name="Boxes" type="Node2D" parent="."]
+position = Vector2( 100, 0 )
 
-[node name="AcceptDialog" type="AcceptDialog" parent="."]
-margin_left = 16.0
-margin_top = 80.0
-margin_right = 118.0
-margin_bottom = 138.0
-window_title = "You Win"
-dialog_text = "Level Cleared"
+[node name="Box" parent="Boxes" instance=ExtResource( 2 )]
+position = Vector2( 700, 600 )
+
+[node name="Box4" parent="Boxes" instance=ExtResource( 2 )]
+position = Vector2( 400, 700 )
+
+[node name="Box2" parent="Boxes" instance=ExtResource( 2 )]
+position = Vector2( 600, 700 )
+
+[node name="Box10" parent="Boxes" instance=ExtResource( 2 )]
+position = Vector2( 600, 500 )
+
+[node name="Box11" parent="Boxes" instance=ExtResource( 2 )]
+position = Vector2( 600, 400 )
+
+[node name="Box12" parent="Boxes" instance=ExtResource( 2 )]
+position = Vector2( 800, 400 )
+
+[node name="Box13" parent="Boxes" instance=ExtResource( 2 )]
+position = Vector2( 800, 600 )
+
+[node name="Box5" parent="Boxes" instance=ExtResource( 2 )]
+position = Vector2( 300, 600 )
+
+[node name="Box6" parent="Boxes" instance=ExtResource( 2 )]
+position = Vector2( 400, 500 )
+
+[node name="Box7" parent="Boxes" instance=ExtResource( 2 )]
+position = Vector2( 600, 600 )
+
+[node name="Box8" parent="Boxes" instance=ExtResource( 2 )]
+position = Vector2( 500, 700 )
+
+[node name="Box9" parent="Boxes" instance=ExtResource( 2 )]
+position = Vector2( 600, 800 )
+
+[node name="Box3" parent="Boxes" instance=ExtResource( 2 )]
+position = Vector2( 1000, 700 )
+
+[node name="Box14" parent="Boxes" instance=ExtResource( 2 )]
+position = Vector2( 900, 700 )
+
+[node name="Box15" parent="Boxes" instance=ExtResource( 2 )]
+position = Vector2( 900, 800 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 500, 800 )
+has_key = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 400, 500 )
+position = Vector2( 510, 542 )
 scale = Vector2( 5, 5 )
 current = true
+zoom = Vector2( 1.125, 1 )
 limit_left = 0
 limit_top = 0
 limit_right = 1500
 limit_bottom = 1100
 
-[node name="Box" parent="." instance=ExtResource( 2 )]
-position = Vector2( 700, 600 )
+[node name="Lockblock" parent="." instance=ExtResource( 8 )]
+position = Vector2( 800, 400 )
+
+[node name="Key" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1200, 600 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 850, 550 )
+scale = Vector2( 29.6875, 17.1875 )
+texture = ExtResource( 9 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -210.0
+margin_top = -10.0
+margin_right = 890.0
+margin_bottom = 1090.0
+theme = ExtResource( 11 )
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MovesLabel" type="Label" parent="TextureRect"]
+anchor_left = 0.282
+anchor_top = 0.645
+anchor_right = 0.464
+anchor_bottom = 0.827
+margin_left = -0.200012
+margin_top = 0.499939
+margin_right = -0.400024
+margin_bottom = 0.299988
+text = "30
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 850.0
+margin_top = -10.0
+margin_right = 1950.0
+margin_bottom = 1090.0
+theme = ExtResource( 11 )
+texture = ExtResource( 10 )
+expand = true
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChapterLabel" type="Label" parent="TextureRect2"]
+anchor_left = 0.545
+anchor_top = 0.645
+anchor_right = 0.727
+anchor_bottom = 0.827
+margin_left = 0.5
+margin_top = 0.499939
+margin_right = 0.299927
+margin_bottom = 195.3
+text = "IX
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="moving" from="Player" to="." method="_on_Player_moving"]
